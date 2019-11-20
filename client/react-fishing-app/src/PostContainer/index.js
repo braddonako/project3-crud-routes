@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
-import PostList from '../PostList'
-import CreatePostForm from '../CreatePostForm'
+import PostList from '../PostList';
+import CreatePostForm from '../CreatePostForm';
+import { Grid } from 'semantic-ui-react';
+import EditPostModal from '../EditPostModal';
 
 class PostContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            postToEdit: {
+                nameOfFish: '',
+                description: '',
+                gear: '',
+                id: ''
+            },
+            showEditModal: false
         }
     }
     componentDidMount(){
@@ -40,11 +49,9 @@ class PostContainer extends Component {
       });
 
       const parsedResponse = await createdPostResponse.json();
-      console.log(parsedResponse, ' this is response')
-    
+      console.log(parsedResponse, ' this is response')  
       
       this.setState({posts: [...this.state.posts, parsedResponse.data]})
-
 
     } catch(err){
       console.log(err)
@@ -52,14 +59,98 @@ class PostContainer extends Component {
  
   }
   
+  deletePost = async (id) => {
+    console.log(id)
+    const deletePostResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/' + id, {
+                                              method: 'DELETE'
+                                            });
 
+    const deletePostParsed = await deletePostResponse.json();
+    console.log(deletePostResponse)
+
+    this.setState({posts: this.state.posts.filter((post) => post.id !== id )})
+
+    console.log(deletePostParsed, ' response from Flask server')
+
+  }
+openAndEdit = (postFromTheList) => {
+    console.log(postFromTheList, ' postToEdit  ');
+
+    this.setState({
+      showEditModal: true,
+      postToEdit: {
+        ...postFromTheList
+      }
+    })
+  }
+  handleEditChange = (e) => {
+
+    this.setState({
+      postToEdit: {
+        ...this.state.postToEdit,
+        [e.currentTarget.name]: e.currentTarget.value
+      }
+    });
+  }
+
+    handleEditChange = (e) => {
+
+    this.setState({
+      dogToEdit: {
+        ...this.state.dogToEdit,
+        [e.currentTarget.name]: e.currentTarget.value
+      }
+    });
+  }
+
+closeAndEdit = async (e) => {
+    e.preventDefault();
+    try {
+
+      const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/' + this.state.postToEdit.id, {
+        method: 'PUT',
+        body: JSON.stringify(this.state.postToEdit),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const editResponseParsed = await editResponse.json();
+      console.log(editResponseParsed, ' parsed edit')
+
+      const newPostArrayWithEdit = this.state.posts.map((post) => {
+
+        if(post.id === editResponseParsed.data.id){
+          post = editResponseParsed.data
+        }
+
+        return post
+      });
+
+      this.setState({
+        showEditModal: false,
+        posts: newPostArrayWithEdit
+      });
+
+    
+    } catch(err){
+      console.log(err)
+    }
+  }
 
 render() {
     return(
-        <React.Fragment>
-        <PostList posts={this.state.posts}/>
-        <CreatePostForm addPost={this.addPost}/>
-        </React.Fragment>
+    <Grid columns={2} divided textAlign='center' style={{ height: '100%' }} verticalAlign='top' stackable>
+        <Grid.Row>
+          <Grid.Column>
+            <PostList posts={this.state.posts} deletePost={this.deletePost} openAndEdit={this.openAndEdit}/>
+          </Grid.Column>
+         <Grid.Column>
+           <CreatePostForm addPost={this.addPost}/>
+          </Grid.Column>
+          <EditPostModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} postToEdit={this.state.postToEdit} closeAndEdit={this.closeAndEdit}/>
+        </Grid.Row>
+    </Grid>
     )
   }
 }

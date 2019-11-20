@@ -10,8 +10,8 @@ function PostList(props) {
             <Card.Description>{post.description}</Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <Button>Delete post</Button>
-            <Button>Edit post</Button>
+            <Button onClick={() => props.deletePost(post.id)}>Delete post</Button>
+            <Button onClick={() => props.openAndEdit(post.id)}>Edit post</Button>
           </Card.Content>
         </Card>
     )

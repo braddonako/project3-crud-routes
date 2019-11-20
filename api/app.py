@@ -29,7 +29,7 @@ def index():
     return 'hi'
 
 CORS(post, origins=['http://localhost:3000'], supports_credentials=True)
-app.register_blueprint(post, url_prefix='/api/v1/posts/')
+app.register_blueprint(post, url_prefix='/api/v1/posts')
 
 if __name__ == '__main__':
     models.initialize()

@@ -8,7 +8,8 @@ class CreatePostForm extends Component {
     this.state = {
       nameOfFish: '',
       description: '',
-      gear: ''
+      gear: '',
+      id: ''
     }
   }
   handleChange = (e) => {
