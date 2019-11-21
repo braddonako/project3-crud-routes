@@ -79,7 +79,7 @@ openAndEdit = (postFromTheList) => {
     this.setState({
       showEditModal: true,
       postToEdit: {
-        ...this.state.posts[postFromTheList-1]
+        ...postFromTheList
       }
     })
   }
@@ -88,16 +88,6 @@ openAndEdit = (postFromTheList) => {
     this.setState({
       postToEdit: {
         ...this.state.postToEdit,
-        [e.currentTarget.name]: e.currentTarget.value
-      }
-    });
-  }
-
-    handleEditChange = (e) => {
-
-    this.setState({
-      dogToEdit: {
-        ...this.state.dogToEdit,
         [e.currentTarget.name]: e.currentTarget.value
       }
     });
