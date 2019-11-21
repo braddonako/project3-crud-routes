@@ -29,8 +29,8 @@ class Login extends Component {
     });
     const parsedResponse = await  loginResponse.json();
     if (parsedResponse.status.code === 200) {
-      console.log('Sign up successful');
-      this.props.history.push('/post'); // Change url to /dogs programmatically with react-router
+      console.log('login successful');
+      this.props.history.push('/posts'); // Change url to /dogs programmatically with react-router
     } else {
       // Else display error message to the user
       this.setState({

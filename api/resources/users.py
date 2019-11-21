@@ -38,8 +38,9 @@ def register():
 @user.route('/login', methods=['POST'])
 
 def login():
+    print('We are hitting the login route')
     payload = request.get_json()
-    print('user is:', user)        
+    print(payload)        
     try:
         user = models.User.get(models.User.email ** payload['email'])
         user_dict = model_to_dict(user)
