@@ -1,6 +1,6 @@
 from peewee import *
 
-DATABASE = SqliteDatabase('fish.sqlite')
+DATABASE = SqliteDatabase('fish1.sqlite')
 
 class User(Model):
     email = CharField(unique=True)
@@ -12,7 +12,7 @@ class User(Model):
         database = DATABASE
 
 class Post(Model):
-    img = CharField()
+    img = CharField(null=True)
     nameOfFish = CharField()
     description = CharField()
     gear = CharField()

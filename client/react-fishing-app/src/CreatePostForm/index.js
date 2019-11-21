@@ -9,7 +9,6 @@ class CreatePostForm extends Component {
       nameOfFish: '',
       description: '',
       gear: '',
-      id: ''
     }
   }
   handleChange = (e) => {

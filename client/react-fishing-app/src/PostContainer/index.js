@@ -79,7 +79,7 @@ openAndEdit = (postFromTheList) => {
     this.setState({
       showEditModal: true,
       postToEdit: {
-        ...postFromTheList
+        ...this.state.posts[postFromTheList-1]
       }
     })
   }

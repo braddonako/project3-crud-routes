@@ -3,7 +3,8 @@ import { Card, Button} from 'semantic-ui-react';
 
 function PostList(props) {
     const posts = props.posts.map((post) => {
-        return (           
+      console.log(post) ; 
+      return (           
         <Card key={post.id}>
           <Card.Content>
             <Card.Header>{post.nameOfFish}</Card.Header>
