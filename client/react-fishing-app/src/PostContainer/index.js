@@ -43,7 +43,7 @@ class PostContainer extends Component {
       const createdPostResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/', {
         method: 'POST',
         body: JSON.stringify(post),
-        // credentials: 'include',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }

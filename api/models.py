@@ -1,7 +1,7 @@
 from peewee import *
 from flask_login import UserMixin
 
-DATABASE = SqliteDatabase('fish3.sqlite')
+DATABASE = SqliteDatabase('fish1.sqlite')
 
 class User(Model, UserMixin):
     email = CharField(unique=True)
@@ -14,9 +14,9 @@ class User(Model, UserMixin):
 
 class Post(Model):
     img = CharField(null=True)
-    nameOfFish = CharField()
-    description = CharField()
-    gear = CharField()
+    nameOfFish = CharField(default="")
+    description = CharField(default="")
+    gear = CharField(default="")
     user = ForeignKeyField(User, backref='posts')
 
     class Meta:
