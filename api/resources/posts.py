@@ -12,19 +12,19 @@ post = Blueprint('posts', 'post')
 def get_all_posts():
     print('current user: ', current_user)
 
-    # all_posts = [model_to_dict(post, max_depth=0) for post in models.Post.select()]
-    # return jsonify(data=all_posts, status={'code': 200, 'message': 'Success'})
-    try:
-        posts = [model_to_dict(post) for post in models.Post.select()]
-        print(posts)
-        return jsonify(data=posts, status={"code": 200, "message": "Success"})
-    except models.DoesNotExist:
-        return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
+    all_posts = [model_to_dict(post, max_depth=0) for post in models.Post.select()]
+    return jsonify(data=all_posts, status={'code': 200, 'message': 'Success'})
+    # try:
+    #     posts = [model_to_dict(post) for post in models.Post.select()]
+    #     print(posts)
+    #     return jsonify(data=posts, status={"code": 200, "message": "Success"})
+    # except models.DoesNotExist:
+    #     return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
 
 
 ##################################### THIS IS MY NEW TEST ROUTES######################################
 
-# ## show route
+## show route
 # @post.route('/<post_id>/', methods=['GET'])
 # def get_posts(post_id):
 #     try:
@@ -55,7 +55,7 @@ def get_all_posts():
 #         return jsonify(data={}, status={'code': 401, 'message': 'You must be logged in to create a post'})
 #     if post_to_delete.owner.id is not current_user.id:
 
-#         return jsonify(data={}, status={'code': 401, 'message': 'You can only delete post you own'})
+#         return jsonify(data={}, status={'code': 401, 'message': 'You can only delete your post'})
 
 #     # Delete the post and send success response back to user
 #     post_to_delete.delete()
@@ -97,7 +97,7 @@ def get_all_posts():
 
 #########################################################################################################
 
-## create route
+# create route
 @post.route('/', methods=["POST"])
 # @login_required
 def create_posts():

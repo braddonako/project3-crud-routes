@@ -1,28 +1,45 @@
 import React from 'react';
-import { Card, Button, Image, Item} from 'semantic-ui-react';
+import { Button, Image, Item} from 'semantic-ui-react';
 
-function PostList(props) {
+const PostList = (props) => {
     const posts = props.posts.map((post) => {
-      console.log(post) ; 
-      return (           
-        <Card key={post.id}>
-          <Card.Content>
-            <Card.Header>{post.nameOfFish}</Card.Header>
-            <Card.Description>{post.description}</Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Button onClick={() => props.deletePost(post.id)}>Delete post</Button>
-            <Button onClick={() => props.openAndEdit(post)}>Edit post</Button>
-          </Card.Content>
-        </Card>
-
-    )
+      console.log(post); 
+      if(localStorage.getItem('sessionId').toString() === post.user.toString()){
+        return(
+          <Item key={post.id}>
+            <Item.Image size='small' src={post.img}/>
+            <Item.Content verticalAlign='middle'>
+              <Item.Header>{post.nameOfFish}</Item.Header>
+              <Item.Description>{post.description}</Item.Description>
+              <Item.Description>Gear Used: {post.gear}</Item.Description>
+              <Item.Description>{post.user}</Item.Description>
+              <Item.Extra>
+                <Button onClick={() => props.openAndEdit(post)} floated='right'>Edit Post</Button>
+                <Button onClick={() => props.deletePost(post.id)} floated='right'>Delete post</Button>
+              </Item.Extra>
+            </Item.Content>
+          </Item>
+        )
+      } else {
+        return(           
+          <Item key={post.id}>
+            <Item.Image size='small' src={post.img}/>
+            <Item.Content verticalAlign='middle'>
+              <Item.Header>{post.nameOfFish}</Item.Header>
+              <Item.Description>{post.description}</Item.Description>
+              <Item.Description>Gear Used: {post.gear}</Item.Description>
+              <Item.Description>{post.user}</Item.Description>
+            </Item.Content>
+          </Item>
+        )
+        }
     })
-    return(
-        <Card.Group>
+        return(
+          <Item.Group relaxed>
             { posts }
-        </Card.Group>
+          </Item.Group>
     )
-}
+    
+  }
 
 export default PostList;

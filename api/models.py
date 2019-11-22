@@ -1,7 +1,7 @@
 from peewee import *
 from flask_login import UserMixin
 
-DATABASE = SqliteDatabase('fish2.sqlite')
+DATABASE = SqliteDatabase('fish4.sqlite')
 
 class User(Model, UserMixin):
     email = CharField(unique=True)
@@ -22,6 +22,9 @@ class Post(Model):
     class Meta:
         db_table ='posts'
         database = DATABASE
+
+    def __str__(self):
+        return '<Post {}: {} : {}>'.format(self.id, self.nameOfFish, self.description)
 
 # class River(Model):
 #     nameOfRiver = CharField()

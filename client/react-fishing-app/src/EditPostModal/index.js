@@ -8,6 +8,10 @@ const EditPostModal = (props) => {
       <Header>Edit Post</Header>
       <Modal.Content>
         <Form onSubmit={props.closeAndEdit}>
+           <Label>
+           Image of Fish:
+          </Label>
+          <Form.Input type='text' name='img' value={props.postToEdit.img} onChange={props.handleEditChange}/>
           <Label>
             Type of Fish:
           </Label>

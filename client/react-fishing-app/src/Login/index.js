@@ -29,7 +29,8 @@ class Login extends Component {
     });
     
     const parsedResponse = await  loginResponse.json();
-
+    localStorage.setItem('sessionId', parsedResponse.data.id);
+    
     if (parsedResponse.status.code === 200) {
       console.log(parsedResponse)
       console.log('login successful');
