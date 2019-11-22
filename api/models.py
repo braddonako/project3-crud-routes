@@ -1,8 +1,7 @@
-import datetime
 from peewee import *
 from flask_login import UserMixin
 
-DATABASE = SqliteDatabase('fish1.sqlite')
+DATABASE = SqliteDatabase('fish2.sqlite')
 
 class User(Model, UserMixin):
     email = CharField(unique=True)
@@ -18,7 +17,7 @@ class Post(Model):
     nameOfFish = CharField()
     description = CharField()
     gear = CharField()
-    # created_at = DateTimeField(default=datetime.datetime.now)
+    user = ForeignKeyField(User, backref='posts')
 
     class Meta:
         db_table ='posts'
