@@ -27,8 +27,11 @@ class Login extends Component {
         'Content-Type': 'application/json'
       }
     });
+    
     const parsedResponse = await  loginResponse.json();
+
     if (parsedResponse.status.code === 200) {
+      console.log(parsedResponse)
       console.log('login successful');
       this.props.history.push('/posts'); // Change url to /dogs programmatically with react-router
     } else {
