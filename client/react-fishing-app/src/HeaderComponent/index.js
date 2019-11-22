@@ -14,6 +14,9 @@ const HeaderComponent = () => {
         <List.Item>
           <Link to="/posts">River Journal</Link>
         </List.Item>
+        <List.Item>
+          <Link to='/logout'>Logout</Link>
+        </List.Item>
       </List>
     </Header>
   )

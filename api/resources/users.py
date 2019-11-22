@@ -2,7 +2,7 @@ import models
 
 from flask import request, jsonify, Blueprint
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
 user = Blueprint('users', 'user')
@@ -50,9 +50,21 @@ def login():
         # check_password_hash(<hash_password>, <plainttext_pw_to_compare>)
         if (check_password_hash(user_dict['password'], payload['password'])):
             del user_dict['password']
-            # login_user(user) # Setup for the session
+            login_user(user) # Setup for the session
             print('User is:', user_dict)
             return jsonify(data=user_dict,  status={'code': 200, 'message': 'User authenticated', 'id': user_id, })
         return jsonify(data={}, status={'code': 401, 'message': "Email or password is incorrect"})
     except models.DoesNotExist:
         return jsonify(data={}, status={'code': 401, 'message': "Email or password is incorrect"})
+
+
+# @user.route('/logout', methods=['GET'])
+# # closely following the docs here: https://flask-login.readthedocs.io/en/latest/#login-example
+# def logout():
+#   # for fun lets get the user's email from current_user to make a nice msg
+#   email = model_to_dict(current_user)['email']
+#   logout_user()
+#   return jsonify(data={}, status={
+#       'code': 200,
+#       'message': "Successfully logged out {}".format(email)
+#   })
