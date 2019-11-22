@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button} from 'semantic-ui-react';
+import { Card, Button, Image, Item} from 'semantic-ui-react';
 
 function PostList(props) {
     const posts = props.posts.map((post) => {
@@ -15,6 +15,7 @@ function PostList(props) {
             <Button onClick={() => props.openAndEdit(post)}>Edit post</Button>
           </Card.Content>
         </Card>
+
     )
     })
     return(
