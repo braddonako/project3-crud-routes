@@ -8,7 +8,8 @@ class CreatePostForm extends Component {
     this.state = {
       nameOfFish: '',
       description: '',
-      gear: '',
+      img: '',
+      gear: ''
     }
   }
   handleChange = (e) => {
@@ -19,6 +20,8 @@ class CreatePostForm extends Component {
       <Segment>
         <h4>Create Entry</h4>
         <Form onSubmit={(e) => this.props.addPost(e, this.state)}>
+          <Label>Image of Fish:</Label>
+          <Form.Input type='text' name='img' value={this.state.img} onChange={this.handleChange}/>
           <Label>Name of Fish:</Label>
           <Form.Input type='text' name='nameOfFish' value={this.state.nameOfFish} onChange={this.handleChange}/>
           <Label>Description:</Label>

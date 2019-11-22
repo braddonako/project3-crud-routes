@@ -31,6 +31,7 @@ class Register extends Component {
         }
       });
       const parsedResponse = await registerResponse.json();
+      localStorage.setItem('sessionId', parsedResponse.data.id);
       if (parsedResponse.status.code === 201) {
         console.log('Sign up successful');
         this.props.history.push('/posts'); // Change url to /dogs programmatically with react-router

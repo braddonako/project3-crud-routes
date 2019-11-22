@@ -13,7 +13,7 @@ class PostContainer extends Component {
                 nameOfFish: '',
                 description: '',
                 gear: '',
-                id: ''
+                img: ''
             },
             showEditModal: false
         }
@@ -43,6 +43,7 @@ class PostContainer extends Component {
       const createdPostResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/', {
         method: 'POST',
         body: JSON.stringify(post),
+        // credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -63,6 +64,7 @@ class PostContainer extends Component {
     console.log(id)
     const deletePostResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/' + id, {
                                               method: 'DELETE'
+                                              // credentials: 'include'
                                             });
 
     const deletePostParsed = await deletePostResponse.json();
@@ -99,6 +101,7 @@ closeAndEdit = async (e) => {
 
       const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/' + this.state.postToEdit.id, {
         method: 'PUT',
+        // credentials: 'include',
         body: JSON.stringify(this.state.postToEdit),
         headers: {
           'Content-Type': 'application/json'
@@ -132,7 +135,7 @@ render() {
     return(
     <Grid columns={2} divided textAlign='center' style={{ height: '100%' }} verticalAlign='top' stackable>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column textAlign="center">
             <PostList posts={this.state.posts} deletePost={this.deletePost} openAndEdit={this.openAndEdit}/>
           </Grid.Column>
          <Grid.Column>
