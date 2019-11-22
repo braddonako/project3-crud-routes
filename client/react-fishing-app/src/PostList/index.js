@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Image, Item} from 'semantic-ui-react';
+import { Button, Item} from 'semantic-ui-react';
 
 const PostList = (props) => {
     const posts = props.posts.map((post) => {
       console.log(post); 
       if(localStorage.getItem('sessionId').toString() === post.user.toString()){
         return(
-          <Item key={post.id}>
+          <Item>
             <Item.Image size='small' src={post.img}/>
             <Item.Content verticalAlign='middle'>
               <Item.Header>{post.nameOfFish}</Item.Header>

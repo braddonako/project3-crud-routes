@@ -1,7 +1,7 @@
 from peewee import *
 from flask_login import UserMixin
 
-DATABASE = SqliteDatabase('fish4.sqlite')
+DATABASE = SqliteDatabase('fish3.sqlite')
 
 class User(Model, UserMixin):
     email = CharField(unique=True)

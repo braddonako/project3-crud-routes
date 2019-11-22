@@ -13,8 +13,7 @@ class PostContainer extends Component {
                 nameOfFish: '',
                 description: '',
                 gear: '',
-                id: '',
-                user: ''
+                img: ''
             },
             showEditModal: false
         }
