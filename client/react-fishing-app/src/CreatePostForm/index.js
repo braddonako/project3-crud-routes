@@ -17,16 +17,19 @@ class CreatePostForm extends Component {
   }
   render(){
     return (
-      <Segment>
+      <Segment style={{
+      background: 'LightSlateGray'
+     }}>
         <h4>Create Entry</h4>
-        <Form onSubmit={(e) => this.props.addPost(e, this.state)}>
-          <Label>Image of Fish:</Label>
+        
+        <Form onSubmit={(e) => this.props.addPost(e, this.state)} >
+          <Label style={{padding: '15px', margin: '15px'}}>Image of Fish:</Label>
           <Form.Input type='text' name='img' value={this.state.img} onChange={this.handleChange}/>
-          <Label>Type of Fish:</Label>
+          <Label style={{padding: '15px', margin: '15px'}}>Type of Fish:</Label>
           <Form.Input type='text' name='nameOfFish' value={this.state.nameOfFish} onChange={this.handleChange}/>
-          <Label>Description:</Label>
-          <Form.Input type='text' name='description' value={this.state.description} onChange={this.handleChange}/>
-          <Label>Gear:</Label>
+          <Label style={{padding: '15px', margin: '15px'}}>Description:</Label>
+          <Form.Input as='textarea' name='description' value={this.state.description} onChange={this.handleChange}/>
+          <Label style={{padding: '15px', margin: '15px'}}>Gear:</Label>
           <Form.Input type='text' name='gear' value={this.state.gear} onChange={this.handleChange}/>
           <Button type='Submit'>Create Entry</Button>
         </Form>

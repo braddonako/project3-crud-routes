@@ -18,7 +18,7 @@ function App() {
  return (
    <main>
      <div style={{
-       background: 'grey'
+      background: 'LightSlateGray'
      }}>
      <HeaderComponent />
      <Switch>
