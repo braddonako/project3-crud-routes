@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message, Grid, Header, Image, Segment } from 'semantic-ui-react';
+import { Form, Button, Message, Grid, Header, Segment } from 'semantic-ui-react';
 
 class Register extends Component {
     constructor() {
