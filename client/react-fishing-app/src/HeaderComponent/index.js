@@ -1,24 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Header, List } from 'semantic-ui-react';
+// import { Link } from 'react-router-dom';
+import {Navbar, Nav } from 'react-bootstrap';
+// import { Header, List, Menu } from 'semantic-ui-react';
+
+
 const HeaderComponent = () => {
   return (
-    <Header>
-      <List>
-        <List.Item>
-          <Link to="/">Register</Link>
-        </List.Item>
-        <List.Item>
-          <Link to="/login">Login</Link>
-        </List.Item>
-        <List.Item>
-          <Link to="/posts">River Journal</Link>
-        </List.Item>
-        <List.Item>
-          <Link to='/logout'>Logout</Link>
-        </List.Item>
-      </List>
-    </Header>
+     <Navbar bg="dark" variant="dark">
+    <Navbar.Brand href="/posts">Foam is the Home</Navbar.Brand>
+    <Nav className="mr-auto">
+      <Nav.Link href="/">Register</Nav.Link>
+      <Nav.Link href="/login">Login</Nav.Link>
+      <Nav.Link href="/posts">River Journal</Nav.Link>
+      <Nav.Link href="/login">Log Out</Nav.Link>
+    </Nav>
+  </Navbar>
+
   )
 }
 export default HeaderComponent;

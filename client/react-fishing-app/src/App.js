@@ -2,6 +2,7 @@ import React from 'react';
 import Register from './Register';
 import Login from './Login';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComponent from './HeaderComponent';
 import PostContainer from './PostContainer';
 import { Route, Switch } from 'react-router-dom';
@@ -17,7 +18,7 @@ function App() {
  return (
    <main>
      <div style={{
-       backgroundColor: 'grey'
+       background: 'grey'
      }}>
      <HeaderComponent />
      <Switch>

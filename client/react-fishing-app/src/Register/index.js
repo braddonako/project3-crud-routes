@@ -60,7 +60,7 @@ class Register extends Component {
             type='password'
             name="password" onChange={this.handleChange} required 
           />
-
+          <Form.Input type='name' name="nickname" placeholder='River Name AKA NickName' onChange={this.handleChange} required />
           <Button color='teal' fluid size='large'>
             Register
           </Button>
@@ -72,17 +72,6 @@ class Register extends Component {
       </Message>
     </Grid.Column>
   </Grid>
-        // <Form onSubmit={this.handleSubmit}>
-        //   <h4>Register New User</h4>
-        //   <Label>Email</Label>
-        //   <Form.Input type="email" name="email" onChange={this.handleChange} required />
-        //   <Label>Password</Label>
-        //   <Form.Input type="password" name="password" onChange={this.handleChange} required />
-        //   <Label>River Name / Username</Label>
-        //   <Form.Input type='name' name="nickname" onChange={this.handleChange} required />
-        //   <Button type="submit" color="green">Sign Up</Button>
-        //   { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
-        // </Form>
       )
     }
   }
