@@ -102,7 +102,7 @@ closeAndEdit = async (e) => {
 
       const editResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/posts/' + this.state.postToEdit.id, {
         method: 'PUT',
-        // credentials: 'include',
+        credentials: 'include',
         body: JSON.stringify(this.state.postToEdit),
         headers: {
           'Content-Type': 'application/json'
@@ -125,7 +125,6 @@ closeAndEdit = async (e) => {
         showEditModal: false,
         posts: newPostArrayWithEdit
       });
-
     
     } catch(err){
       console.log(err)

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Item} from 'semantic-ui-react';
 
+
 const PostList = (props) => {
     const posts = props.posts.map((post) => { //this is our issue
       console.log(post); 
@@ -23,7 +24,8 @@ const PostList = (props) => {
               <div style={{
               border: 'double white 10px',
               borderRadius: '15px',
-              padding: '7px'
+              padding: '7px',
+              wordWrap: 'break-word'
             }}>
               <Item.Header>Fish Species: {post.nameOfFish}</Item.Header>
               <Item.Description>Journal: {post.description}</Item.Description>
