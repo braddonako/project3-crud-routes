@@ -133,17 +133,17 @@ closeAndEdit = async (e) => {
 
 render() {
     return(
-    <Grid columns={2} divided textAlign='center' style={{ height: '100%' }} verticalAlign='top' stackable>
-        <Grid.Row>
-          <Grid.Column textAlign="center">
+    // <Grid columns={2} divided textAlign='center' style={{ height: '100%' }} verticalAlign='top' stackable>
+    //     <Grid.Row>
+          // <Grid.Column textAlign="center">
             <PostList posts={this.state.posts} deletePost={this.deletePost} openAndEdit={this.openAndEdit}/>
-          </Grid.Column>
-         <Grid.Column>
-           <CreatePostForm addPost={this.addPost}/>
-          </Grid.Column>
-          <EditPostModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} postToEdit={this.state.postToEdit} closeAndEdit={this.closeAndEdit}/>
-        </Grid.Row>
-    </Grid>
+          // </Grid.Column>
+        //  <Grid.Column>
+          //  <CreatePostForm addPost={this.addPost}/>
+          // </Grid.Column>
+          // <EditPostModal handleEditChange={this.handleEditChange} open={this.state.showEditModal} postToEdit={this.state.postToEdit} closeAndEdit={this.closeAndEdit}/>
+        // </Grid.Row>
+    // </Grid>
     )
   }
 }
