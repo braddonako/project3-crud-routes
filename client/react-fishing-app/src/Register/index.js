@@ -46,7 +46,7 @@ class Register extends Component {
       return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='teal' textAlign='center'>
+      <Header as='h2' color='blue' textAlign='center' style={{fontSize: '2em', textTransform: 'uppercase'}}>
       Register here!
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
@@ -61,7 +61,7 @@ class Register extends Component {
             name="password" onChange={this.handleChange} required 
           />
           <Form.Input type='name' name="nickname" placeholder='River Name AKA NickName' onChange={this.handleChange} required />
-          <Button color='teal' fluid size='large'>
+          <Button color='blue' fluid size='large'>
             Register
           </Button>
            { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
