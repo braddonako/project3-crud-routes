@@ -4,6 +4,7 @@ import CreatePostForm from '../CreatePostForm';
 import { Grid } from 'semantic-ui-react';
 import EditPostModal from '../EditPostModal';
 
+
 class PostContainer extends Component {
     constructor(props){
         super(props);
