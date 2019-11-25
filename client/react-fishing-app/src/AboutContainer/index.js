@@ -7,6 +7,8 @@ const AboutContainer = () => (
       background: 'LightSlateGray',
       backgroundSize: 'cover'
      }}>
+
+    <h1>About Foam</h1>
     
     <p style={{
         fontSize: 25,

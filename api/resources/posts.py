@@ -46,9 +46,15 @@ def get_one_post(id):
 @post.route('/<id>', methods=["PUT"])
 # @login_required
 def update_post(id):
+    print('UPDATINGGG')
+    print(id)
     payload = request.get_json()
+    print(payload)
+    payload['user'] = payload['user']['id']
     query = models.Post.update(**payload).where(models.Post.id==id)
+    print(query)
     query.execute()
+    # print(model_to_dict(models.Post.get_by_id(id)))
     return jsonify(data=model_to_dict(models.Post.get_by_id(id)), status={"code": 200, "message": "resource updated successfully"})
 
 @post.route('/<id>', methods=["Delete"])

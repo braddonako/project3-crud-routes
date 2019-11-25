@@ -62,7 +62,7 @@ class Login extends Component {
             icon='lock'
             iconPosition='left'
             placeholder='Password'
-            type='password' type="password" name="password" onChange={this.handleChange} required
+            type='password' name="password" onChange={this.handleChange} required
           />
 
           <Button color='teal' fluid size='large'>
