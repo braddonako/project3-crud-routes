@@ -51,8 +51,8 @@ class Login extends Component {
     
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='teal' textAlign='center'>
-      Log-in to Foam is the Home!
+      <Header as='h2' color='blue' style={{fontSize: '2em', textTransform: 'uppercase'}} textAlign='center'>
+      Log-in
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
         <Segment stacked>
@@ -65,7 +65,7 @@ class Login extends Component {
             type='password' name="password" onChange={this.handleChange} required
           />
 
-          <Button color='teal' fluid size='large'>
+          <Button color='blue' fluid size='large'>
             Login
           </Button>
           { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
