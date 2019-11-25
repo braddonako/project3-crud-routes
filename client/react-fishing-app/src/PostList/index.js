@@ -6,29 +6,29 @@ const PostList = (props) => {
       console.log(post); 
       if(localStorage.getItem('sessionId') === post.user.toString()){
         return(
-          <Item key={post.id}>
+          <Item key={post.id} style={{flexDirection:'row'}}>
             <Item.Image size='small' src={post.img}/>
-            <Item.Content verticalAlign='middle'>
-              <Item.Header>{post.nameOfFish}</Item.Header>
-              <Item.Description>{post.description}</Item.Description>
+            <Item.Content verticalAlign='middle' >
+              <Item.Header>Fish Species: {post.nameOfFish}</Item.Header>
+              <Item.Description>Journal: {post.description}</Item.Description>
               <Item.Description>Gear Used: {post.gear}</Item.Description>
-              <Item.Description>{post.user.nickname}</Item.Description>
+              <Item.Description>Posted By: {post.user.nickname}</Item.Description>
               <Item.Extra>
-                <Button onClick={() => props.openAndEdit(post)} floated='right'>Edit Post</Button>
-                <Button onClick={() => props.deletePost(post.id)} floated='right'>Delete post</Button>
+                <Button onClick={() => props.openAndEdit(post)} floated='middle'>Edit Post</Button>
+                <Button onClick={() => props.deletePost(post.id)} floated='middle'>Delete post</Button>
               </Item.Extra>
             </Item.Content>
           </Item>
         )
       } else {
         return(           
-          <Item key={post.id}>
+          <Item key={post.id} style={{flexDirection:'row'}}>
             <Item.Image size='small' src={post.img}/>
             <Item.Content verticalAlign='middle'>
-              <Item.Header>{post.nameOfFish}</Item.Header>
-              <Item.Description>{post.description}</Item.Description>
+              <Item.Header>Fish Species: {post.nameOfFish}</Item.Header>
+              <Item.Description>Journal: {post.description}</Item.Description>
               <Item.Description>Gear Used: {post.gear}</Item.Description>
-              <Item.Description>{post.user.nickname}</Item.Description>
+              <Item.Description>Posted by: {post.user.nickname}</Item.Description>
             </Item.Content>
           </Item>
         )
