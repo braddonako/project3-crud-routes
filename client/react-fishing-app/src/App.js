@@ -16,6 +16,9 @@ const My404 = () => {
 function App() {
  return (
    <main>
+     <div style={{
+       backgroundColor: 'grey'
+     }}>
      <HeaderComponent />
      <Switch>
        <Route exact path="/" component={ Register } />
@@ -23,7 +26,9 @@ function App() {
        <Route exact path="/posts" component={ PostContainer } />
        <Route component={My404} />
      </Switch>
+     </div>
    </main>
+   
  );
 }
 export default App;

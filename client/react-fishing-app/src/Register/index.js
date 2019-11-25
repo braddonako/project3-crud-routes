@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message } from 'semantic-ui-react';
+import { Form, Label, Button, Message, Grid, Header, Image, Segment } from 'semantic-ui-react';
 
 class Register extends Component {
     constructor() {
@@ -44,17 +44,45 @@ class Register extends Component {
     }
     render() {
       return (
-        <Form onSubmit={this.handleSubmit}>
-          <h4>Register New User</h4>
-          <Label>Email</Label>
-          <Form.Input type="email" name="email" onChange={this.handleChange} required />
-          <Label>Password</Label>
-          <Form.Input type="password" name="password" onChange={this.handleChange} required />
-          <Label>River Name</Label>
-          <Form.Input type='name' name="nickname" onChange={this.handleChange} required />
-          <Button type="submit" color="green">Sign Up</Button>
-          { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
-        </Form>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='teal' textAlign='center'>
+      Register here!
+      </Header>
+      <Form size='large' onSubmit={this.handleSubmit}>
+        <Segment stacked>
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' type="email" name="email" onChange={this.handleChange} required />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password'
+            name="password" onChange={this.handleChange} required 
+          />
+
+          <Button color='teal' fluid size='large'>
+            Register
+          </Button>
+           { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
+        </Segment>
+      </Form>
+      <Message>
+        Already registered? <a href='/login'>Log-in</a>
+      </Message>
+    </Grid.Column>
+  </Grid>
+        // <Form onSubmit={this.handleSubmit}>
+        //   <h4>Register New User</h4>
+        //   <Label>Email</Label>
+        //   <Form.Input type="email" name="email" onChange={this.handleChange} required />
+        //   <Label>Password</Label>
+        //   <Form.Input type="password" name="password" onChange={this.handleChange} required />
+        //   <Label>River Name / Username</Label>
+        //   <Form.Input type='name' name="nickname" onChange={this.handleChange} required />
+        //   <Button type="submit" color="green">Sign Up</Button>
+        //   { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
+        // </Form>
       )
     }
   }

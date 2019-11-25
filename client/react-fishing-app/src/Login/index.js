@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Message } from 'semantic-ui-react';
+import { Form, Label, Button, Message, Segment, Image, Grid, Header } from 'semantic-ui-react';
+
+
+
 class Login extends Component {
   constructor() {
     super();
@@ -44,15 +47,35 @@ class Login extends Component {
   }
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <h4>Sign In</h4>
-        <Label>Email</Label>
-        <Form.Input type="email" name="email" onChange={this.handleChange} required />
-        <Label>Password</Label>
-        <Form.Input type="password" name="password" onChange={this.handleChange} required />
-        <Button type="submit" color="green">Login</Button>
-        { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
+    
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='teal' textAlign='center'>
+      Log-in to Foam is the Home!
+      </Header>
+      <Form size='large' onSubmit={this.handleSubmit}>
+        <Segment stacked>
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' type="email" name="email" onChange={this.handleChange} required  />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password' type="password" name="password" onChange={this.handleChange} required
+          />
+
+          <Button color='teal' fluid size='large'>
+            Login
+          </Button>
+          { this.state.errorMsg ? <Message negative>{this.state.errorMsg}</Message> : null }
+        </Segment>
       </Form>
+      <Message>
+        New to us? <a href='/'>Sign Up</a>
+      </Message>
+    </Grid.Column>
+  </Grid>
+     
     )
   }
 }
